@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg-page); font-family: var(--font-sans); }
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+  .swatch { flex: 1; min-width: 80px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .swatch-color { height: 72px; border: 1px solid oklch(85% 0.02 80); }
+  .swatch-info { padding: 8px 10px; background: white; }
+  .swatch-name { font-size: 11px; font-weight: 500; color: var(--fg-primary); letter-spacing: 0.03em; }
+  .swatch-val  { font-size: 10px; color: var(--fg-muted); font-family: var(--font-mono); margin-top: 2px; }
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); margin: 0 0 8px; }
+  .group { margin-bottom: 18px; }
+</style>
+</head>
+<body>
+<div class="group">
+  <div class="section-label">Cream / Linen</div>
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(97% 0.015 80)"></div>
+      <div class="swatch-info"><div class="swatch-name">Cream 50</div><div class="swatch-val">near white</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(95% 0.022 80)"></div>
+      <div class="swatch-info"><div class="swatch-name">Cream 100</div><div class="swatch-val">page bg</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(91% 0.025 78)"></div>
+      <div class="swatch-info"><div class="swatch-name">Cream 200</div><div class="swatch-val">subtle</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(86% 0.028 76)"></div>
+      <div class="swatch-info"><div class="swatch-name">Cream 300</div><div class="swatch-val">border</div></div>
+    </div>
+  </div>
+</div>
+<div class="group">
+  <div class="section-label">Slate Blue</div>
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(68% 0.055 238)"></div>
+      <div class="swatch-info"><div class="swatch-name">Slate 500</div><div class="swatch-val">mid blue</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(80% 0.04 237)"></div>
+      <div class="swatch-info"><div class="swatch-name">Slate 300</div><div class="swatch-val">airy</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(92% 0.02 236)"></div>
+      <div class="swatch-info"><div class="swatch-name">Slate 100</div><div class="swatch-val">wash</div></div>
+    </div>
+  </div>
+</div>
+<div class="group">
+  <div class="section-label">Salmon &amp; Amber</div>
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(73% 0.09 22)"></div>
+      <div class="swatch-info"><div class="swatch-name">Salmon 500</div><div class="swatch-val">warm stripe</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(83% 0.06 20)"></div>
+      <div class="swatch-info"><div class="swatch-name">Salmon 300</div><div class="swatch-val">soft peach</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(60% 0.105 68)"></div>
+      <div class="swatch-info"><div class="swatch-name">Amber 600</div><div class="swatch-val">deep ochre</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(67% 0.1 67)"></div>
+      <div class="swatch-info"><div class="swatch-name">Amber 500</div><div class="swatch-val">warm gold</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(80% 0.07 65)"></div>
+      <div class="swatch-info"><div class="swatch-name">Amber 300</div><div class="swatch-val">sand</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

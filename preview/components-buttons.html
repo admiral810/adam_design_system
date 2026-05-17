@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px 28px; background: var(--bg-page); font-family: var(--font-sans); }
+  .row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); margin: 0 0 8px; }
+  .divider { border: none; border-top: 1px solid var(--border-subtle); margin: 16px 0; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-sans); font-weight: 500;
+    border-radius: var(--radius-sm); cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none; text-decoration: none;
+  }
+  .btn-md { font-size: var(--text-sm); padding: 10px 20px; }
+  .btn-sm { font-size: var(--text-xs); padding: 7px 14px; letter-spacing: 0.02em; }
+  .btn-lg { font-size: var(--text-base); padding: 13px 28px; }
+
+  /* Primary */
+  .btn-primary { background: var(--color-navy-800); color: var(--color-cream-50); }
+  .btn-primary:hover { background: var(--color-navy-900); }
+
+  /* Accent / CTA */
+  .btn-accent { background: var(--accent-primary); color: var(--color-cream-50); }
+  .btn-accent:hover { background: var(--accent-hover); }
+
+  /* Secondary / outlined */
+  .btn-outline { background: transparent; color: var(--fg-primary); border: 1.5px solid var(--border-default); }
+  .btn-outline:hover { border-color: var(--fg-primary); }
+
+  /* Ghost */
+  .btn-ghost { background: transparent; color: var(--fg-secondary); }
+  .btn-ghost:hover { color: var(--fg-primary); }
+
+  /* Soft */
+  .btn-soft { background: var(--accent-subtle); color: var(--color-coral-700); }
+  .btn-soft:hover { background: var(--color-coral-200); }
+
+  /* Disabled */
+  .btn-disabled { background: var(--color-cream-200); color: var(--fg-muted); cursor: not-allowed; }
+</style>
+</head>
+<body>
+  <div class="label">Primary</div>
+  <div class="row">
+    <button class="btn btn-primary btn-sm">Small</button>
+    <button class="btn btn-primary btn-md">Get in touch</button>
+    <button class="btn btn-primary btn-lg">View all work</button>
+  </div>
+  <hr class="divider">
+  <div class="label">Accent / CTA</div>
+  <div class="row">
+    <button class="btn btn-accent btn-md">Let's talk</button>
+    <button class="btn btn-accent btn-sm">Read more</button>
+  </div>
+  <hr class="divider">
+  <div class="label">Outline &amp; Ghost</div>
+  <div class="row">
+    <button class="btn btn-outline btn-md">See the project</button>
+    <button class="btn btn-ghost btn-md">Learn more</button>
+    <button class="btn btn-soft btn-md">Case study</button>
+  </div>
+  <hr class="divider">
+  <div class="label">Disabled</div>
+  <div class="row">
+    <button class="btn btn-disabled btn-md" disabled>Unavailable</button>
+  </div>
+</body>
+</html>

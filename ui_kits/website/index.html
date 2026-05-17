@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adam — Personal Website UI Kit</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg-page);
+    color: var(--fg-primary);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--type-body-lh);
+    -webkit-font-smoothing: antialiased;
+  }
+  #root { min-height: 100%; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useCallback } = React;
+
+// ─────────────────────────────────────────────
+// HEADER
+// ─────────────────────────────────────────────
+function Header({ activePage, onNavigate }) {
+  const navItems = [
+    { id: "home", label: "Home" },
+    { id: "work", label: "Work" },
+    { id: "about", label: "About" },
+    { id: "contact", label: "Contact" },
+  ];
+
+  return (
+    <header style={{
+      position: "sticky", top: 0, zIndex: 100,
+      background: "oklch(95% 0.022 80 / 0.92)",
+      backdropFilter: "blur(12px)",
+      borderBottom: "1px solid var(--border-subtle)",
+    }}>
+      <div style={{
+        maxWidth: 1100, margin: "0 auto", padding: "0 32px",
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        height: 60,
+      }}>
+        <button onClick={() => onNavigate("home")} style={{
+          background: "none", border: "none", cursor: "pointer", padding: 0,
+          fontFamily: "var(--font-serif)", fontSize: "var(--text-lg)",
+          fontWeight: 700, letterSpacing: "-0.01em", color: "var(--fg-primary)",
+        }}>
+          Adam<span style={{ fontWeight: 400, fontStyle: "italic", color: "var(--color-coral-600)", marginLeft: 2 }}>.</span>
+        </button>
+
+        <nav style={{ display: "flex", gap: 4, alignItems: "center" }}>
+          {navItems.map(item => (
+            <button key={item.id} onClick={() => onNavigate(item.id)} style={{
+              background: activePage === item.id ? "var(--color-cream-200)" : "transparent",
+              border: "none", cursor: "pointer",
+              fontFamily: "var(--font-sans)", fontSize: "var(--text-sm)", fontWeight: 400,
+              padding: "6px 12px", borderRadius: "var(--radius-sm)",
+              color: activePage === item.id ? "var(--fg-primary)" : "var(--fg-secondary)",
+              transition: "all 150ms ease-out",
+            }}>
+              {item.label}
+            </button>
+          ))}
+          <button onClick={() => onNavigate("contact")} style={{
+            marginLeft: 8,
+            fontFamily: "var(--font-sans)", fontSize: "var(--text-sm)", fontWeight: 500,
+            padding: "7px 16px", borderRadius: "var(--radius-sm)",
+            background: "var(--color-navy-800)", color: "var(--color-cream-50)",
+            border: "none", cursor: "pointer", transition: "background 150ms ease-out",
+          }}
+            onMouseOver={e => e.currentTarget.style.background = "var(--color-navy-900)"}
+            onMouseOut={e => e.currentTarget.style.background = "var(--color-navy-800)"}
+          >
+            Get in touch
+          </button>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+// ─────────────────────────────────────────────
+// HERO
+// ─────────────────────────────────────────────
+function Hero({ onNavigate }) {
+  const stripes = [
+    { color: "oklch(95% 0.022 80)", flex: 2 },
+    { color: "oklch(73% 0.09 22)", flex: 1.2 },
+    { color: "oklch(95% 0.022 80)", flex: 1.5 },
+    { color: "oklch(68% 0.055 238)", flex: 1 },
+    { color: "oklch(95% 0.022 80)", flex: 2 },
+    { color: "oklch(67% 0.1 67)", flex: 1.2 },
+    { color: "oklch(95% 0.022 80)", flex: 1 },
+    { color: "oklch(30% 0.072 243)", flex: 2 },
+  ];
+
+  return (
+    <section style={{
+      maxWidth: 1100, margin: "0 auto", padding: "100px 32px 80px",
+      display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center",
+    }}>
+      <div>
+        <p style={{
+          fontFamily: "var(--font-sans)", fontSize: "var(--text-xs)", fontWeight: 500,
+          letterSpacing: "0.08em", textTransform: "uppercase",
+          color: "var(--fg-muted)", marginBottom: 20,
+        }}>Designer &amp; engineer · Brooklyn, NY</p>
+
+        <h1 style={{
+          fontFamily: "var(--font-serif)",
+          fontSize: "clamp(2.5rem, 5vw, 3.75rem)",
+          fontWeight: 700, lineHeight: 1.1, letterSpacing: "-0.02em",
+          color: "var(--fg-primary)", marginBottom: 12,
+        }}>
+          Thoughtful work,<br />
+          <em style={{ fontStyle: "italic", fontWeight: 400, color: "var(--color-coral-600)" }}>quietly made.</em>
+        </h1>
+
+        <p style={{
+          fontSize: "var(--text-md)", fontWeight: 300, lineHeight: 1.75,
+          color: "var(--fg-secondary)", maxWidth: 440, marginBottom: 40,
+        }}>
+          I design and build products that feel calm and considered — at the intersection of craft and function.
+        </p>
+
+        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+          <button onClick={() => onNavigate("work")} style={{
+            fontFamily: "var(--font-sans)", fontSize: "var(--text-sm)", fontWeight: 500,
+            padding: "11px 24px", borderRadius: "var(--radius-sm)",
+            background: "var(--color-navy-800)", color: "var(--color-cream-50)",
+            border: "none", cursor: "pointer", transition: "background 150ms ease-out",
+          }}
+            onMouseOver={e => e.currentTarget.style.background = "var(--color-navy-900)"}
+            onMouseOut={e => e.currentTarget.style.background = "var(--color-navy-800)"}
+          >See the work</button>
+          <button onClick={() => onNavigate("about")} style={{
+            fontFamily: "var(--font-sans)", fontSize: "var(--text-sm)", fontWeight: 400,
+            padding: "11px 20px", borderRadius: "var(--radius-sm)",
+            background: "transparent", color: "var(--fg-secondary)",
+            border: "1.5px solid var(--border-default)", cursor: "pointer",
+            transition: "all 150ms ease-out",
+          }}
+            onMouseOver={e => { e.currentTarget.style.borderColor = "var(--fg-primary)"; e.currentTarget.style.color = "var(--fg-primary)"; }}
+            onMouseOut={e => { e.currentTarget.style.borderColor = "var(--border-default)"; e.currentTarget.style.color = "var(--fg-secondary)"; }}
+          >About me</button>
+        </div>
+      </div>
+
+      {/* Stripe art panel */}
+      <div style={{
+        display: "flex", flexDirection: "column",
+        borderRadius: "var(--radius-xl)", overflow: "hidden",
+        boxShadow: "var(--shadow-lg)", height: 320,
+      }}>
+        {stripes.map((s, i) => (
+          <div key={i} style={{ background: s.color, flex: s.flex, width: "100%" }} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────
+// PROJECT CARD
+// ─────────────────────────────────────────────
+function ProjectCard({ tag, title, desc, link, accent, hasImage }) {
+  const [hovered, setHovered] = useState(false);
+  const arrow = <span style={{ display: "inline-block", transition: "transform 150ms ease-out", transform: hovered ? "translateX(3px)" : "translateX(0)" }}>→</span>;
+
+  if (accent) {
+    return (
+      <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
+        background: "var(--color-navy-800)", borderRadius: "var(--radius-lg)",
+        padding: "28px", boxShadow: hovered ? "var(--shadow-lg)" : "var(--shadow-sm)",
+        transition: "box-shadow 300ms ease-out",
+        display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 200,
+      }}>
+        <div>
+          <p style={{ fontSize: "var(--text-xs)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--color-slate-300)", marginBottom: 10 }}>{tag}</p>
+          <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "var(--text-2xl)", fontWeight: 600, lineHeight: 1.25, color: "var(--color-cream-50)", marginBottom: 10 }}>{title}</h3>
+          {desc && <p style={{ fontSize: "var(--text-sm)", lineHeight: 1.65, color: "oklch(78% 0.035 240)", marginBottom: 20 }}>{desc}</p>}
+        </div>
+        <a href="#" style={{ fontSize: "var(--text-sm)", fontWeight: 500, color: "var(--color-coral-400)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4 }}>
+          Read the essay {arrow}
+        </a>
+      </div>
+    );
+  }
+
+  if (hasImage) {
+    return (
+      <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
+        background: "var(--color-cream-50)", borderRadius: "var(--radius-lg)",
+        boxShadow: hovered ? "var(--shadow-md)" : "var(--shadow-sm)",
+        transition: "box-shadow 300ms ease-out", overflow: "hidden",
+      }}>
+        <div style={{ height: 140, display: "flex", flexDirection: "column" }}>
+          {[{c:"oklch(92% 0.02 236)",f:2},{c:"oklch(80% 0.04 237)",f:1},{c:"oklch(92% 0.02 236)",f:1.5},{c:"oklch(68% 0.055 238)",f:1}]
+            .map((s, i) => <div key={i} style={{ background: s.c, flex: s.f }} />)}
+        </div>
+        <div style={{ padding: "20px 24px 24px" }}>
+          <p style={{ fontSize: "var(--text-xs)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 8 }}>{tag}</p>
+          <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "var(--text-xl)", fontWeight: 600, lineHeight: 1.25, color: "var(--fg-primary)", marginBottom: 8 }}>{title}</h3>
+          {desc && <p style={{ fontSize: "var(--text-sm)", lineHeight: 1.65, color: "var(--fg-secondary)", marginBottom: 16 }}>{desc}</p>}
+          <a href="#" style={{ fontSize: "var(--text-sm)", fontWeight: 500, color: "var(--accent-primary)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4 }}>
+            See the work {arrow}
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
+      background: "var(--color-cream-50)", borderRadius: "var(--radius-lg)",
+      padding: "28px", boxShadow: hovered ? "var(--shadow-md)" : "var(--shadow-sm)",
+      transition: "box-shadow 300ms ease-out", border: "1px solid var(--border-subtle)",
+      display: "flex", flexDirection: "column", justifyContent: "space-between", minHeight: 190,
+    }}>
+      <div>
+        <p style={{ fontSize: "var(--text-xs)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 10 }}>{tag}</p>
+        <h3 style={{ fontFamily: "var(--font-serif)", fontSize: "var(--text-xl)", fontWeight: 600, lineHeight: 1.25, color: "var(--fg-primary)", marginBottom: 10 }}>{title}</h3>
+        {desc && <p style={{ fontSize: "var(--text-sm)", lineHeight: 1.65, color: "var(--fg-secondary)", marginBottom: 16 }}>{desc}</p>}
+      </div>
+      <a href="#" style={{ fontSize: "var(--text-sm)", fontWeight: 500, color: "var(--accent-primary)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 4 }}>
+        Read more {arrow}
+      </a>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────
+// FOOTER
+// ─────────────────────────────────────────────
+function Footer({ onNavigate }) {
+  const year = new Date().getFullYear();
+  const navLinks = [["home","Home"],["work","Work"],["about","About"],["contact","Contact"]];
+  const socialLinks = ["GitHub","LinkedIn","Are.na","Read.cv"];
+  const mutedColor = "oklch(82% 0.03 240)";
+  const dimColor = "oklch(68% 0.04 241)";
+
+  return (
+    <footer style={{ borderTop: "1px solid var(--border-subtle)", background: "var(--color-navy-900)", padding: "56px 32px" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr auto auto", gap: 40, alignItems: "start" }}>
+        <div>
+          <div style={{ fontFamily: "var(--font-serif)", fontSize: "var(--text-lg)", fontWeight: 700, color: "var(--color-cream-50)", marginBottom: 10 }}>
+            Adam<span style={{ fontStyle: "italic", fontWeight: 400, color: "var(--color-coral-400)", marginLeft: 2 }}>.</span>
+          </div>
+          <p style={{ fontSize: "var(--text-sm)", lineHeight: 1.65, color: "oklch(78% 0.03 240)", maxWidth: 260 }}>
+            Designer and engineer, building things slowly and with care.
+          </p>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <p style={{ fontSize: "var(--text-xs)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "oklch(72% 0.04 241)", marginBottom: 4 }}>Pages</p>
+          {navLinks.map(([id, label]) => (
+            <button key={id} onClick={() => onNavigate(id)} style={{
+              background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left",
+              fontSize: "var(--text-sm)", color: mutedColor, transition: "color 150ms ease-out",
+            }}
+              onMouseOver={e => e.currentTarget.style.color = "var(--color-cream-50)"}
+              onMouseOut={e => e.currentTarget.style.color = mutedColor}
+            >{label}</button>
+          ))}
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <p style={{ fontSize: "var(--text-xs)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "oklch(72% 0.04 241)", marginBottom: 4 }}>Elsewhere</p>
+          {socialLinks.map(link => (
+            <a key={link} href="#" style={{ fontSize: "var(--text-sm)", color: mutedColor, textDecoration: "none", transition: "color 150ms ease-out" }}
+              onMouseOver={e => e.currentTarget.style.color = "var(--color-cream-50)"}
+              onMouseOut={e => e.currentTarget.style.color = mutedColor}
+            >{link}</a>
+          ))}
+        </div>
+      </div>
+
+      <div style={{ maxWidth: 1100, margin: "40px auto 0", paddingTop: 24, borderTop: "1px solid oklch(22% 0.065 245)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <p style={{ fontSize: "var(--text-xs)", color: "oklch(68% 0.04 241)" }}>© {year} Adam. All rights reserved.</p>
+        <p style={{ fontSize: "var(--text-xs)", color: "oklch(68% 0.04 241)", fontStyle: "italic" }}>Brooklyn, NY</p>
+      </div>
+    </footer>
+  );
+}
+
+// ─────────────────────────────────────────────
+// PAGES
+// ─────────────────────────────────────────────
+function HomePage({ onNavigate }) {
+  const projects = [
+    { tag: "Design system · 2026", title: "Personal design system", desc: "Building a cohesive visual language from two pieces of coastal inspiration — a brand and a blanket.", accent: false },
+    { tag: "Product · 2025", title: "Tidal — surf conditions app", desc: "A calm, data-light iOS app for checking wave conditions without the noise.", accent: false, hasImage: true },
+    { tag: "Writing", title: "On designing slowly", desc: "Why treating pace as a design constraint changed how I work.", accent: true },
+  ];
+
+  return (
+    <div>
+      <Header activePage="home" onNavigate={onNavigate} />
+      <Hero onNavigate={onNavigate} />
+
+      {/* Work section */}
+      <section style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 32px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 40 }}>
+          <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "var(--text-3xl)", fontWeight: 600, lineHeight: 1.2 }}>Selected work</h2>
+          <button onClick={() => onNavigate("work")} style={{ background: "none", border: "none", cursor: "pointer", fontSize: "var(--text-sm)", fontWeight: 500, color: "var(--accent-primary)" }}>See everything →</button>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
+          {projects.map((p, i) => <ProjectCard key={i} {...p} />)}
+        </div>
+      </section>
+
+      {/* About section */}
+      <section style={{ background: "var(--bg-subtle)", borderTop: "1px solid var(--border-subtle)", borderBottom: "1px solid var(--border-subtle)" }}>
+        <div style={{ maxWidth: 780, margin: "0 auto", padding: "80px 32px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div>
+            <p style={{ fontSize: "var(--text-xs)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 12 }}>About</p>
+            <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "var(--text-3xl)", fontWeight: 600, lineHeight: 1.2, marginBottom: 20 }}>Hi, I'm Adam.</h2>
+            <p style={{ fontSize: "var(--text-md)", fontWeight: 300, lineHeight: 1.75, color: "var(--fg-secondary)", marginBottom: 24 }}>Designer and engineer, building things at the intersection of craft and product.</p>
+            <button onClick={() => onNavigate("about")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontSize: "var(--text-sm)", fontWeight: 500, color: "var(--accent-primary)", borderBottom: "1px solid var(--accent-primary)", paddingBottom: 2 }}>More about me</button>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {["Design systems", "Product design", "Front-end engineering", "Creative direction"].map(skill => (
+              <div key={skill} style={{ display: "flex", alignItems: "center", gap: 12, paddingBottom: 16, borderBottom: "1px solid var(--border-subtle)" }}>
+                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--accent-primary)", flexShrink: 0 }}></div>
+                <span style={{ fontSize: "var(--text-base)", color: "var(--fg-secondary)" }}>{skill}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer onNavigate={onNavigate} />
+    </div>
+  );
+}
+
+function WorkPage({ onNavigate }) {
+  const projects = [
+    { tag: "Design system · 2026", title: "Personal design system", desc: "A full visual language built from coastal inspiration.", accent: false },
+    { tag: "Product · 2025", title: "Tidal", desc: "Surf conditions, simplified.", accent: false, hasImage: true },
+    { tag: "Brand · 2025", title: "Harborside Co.", desc: "Identity work for a small coastal outfitter.", accent: false },
+    { tag: "Product · 2024", title: "Field Notes app", desc: "A quiet journaling app with no streaks, no metrics.", accent: false, hasImage: true },
+    { tag: "Writing", title: "On designing slowly", desc: "Why pace is a design constraint.", accent: true },
+    { tag: "Side project · 2024", title: "Tide clock", desc: "A physical object that shows local tide levels.", accent: false },
+  ];
+  return (
+    <div>
+      <Header activePage="work" onNavigate={onNavigate} />
+      <section style={{ maxWidth: 780, margin: "0 auto", padding: "80px 32px 40px" }}>
+        <p style={{ fontSize: "var(--text-xs)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 16 }}>Selected work</p>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "var(--text-4xl)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.015em", marginBottom: 64 }}>Things I've made</h1>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 20 }}>
+          {projects.map((p, i) => <ProjectCard key={i} {...p} />)}
+        </div>
+      </section>
+      <Footer onNavigate={onNavigate} />
+    </div>
+  );
+}
+
+function AboutPage({ onNavigate }) {
+  return (
+    <div>
+      <Header activePage="about" onNavigate={onNavigate} />
+      <section style={{ maxWidth: 640, margin: "0 auto", padding: "80px 32px 120px" }}>
+        <p style={{ fontSize: "var(--text-xs)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 16 }}>About</p>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "var(--text-4xl)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.015em", marginBottom: 32 }}>Hi, I'm Adam.</h1>
+        <p style={{ fontSize: "var(--text-md)", fontWeight: 300, lineHeight: 1.75, color: "var(--fg-secondary)", marginBottom: 20 }}>I'm a designer and engineer based in Brooklyn. I work at the intersection of product and craft — building things that are quiet, useful, and well-made.</p>
+        <p style={{ fontSize: "var(--text-base)", lineHeight: 1.7, color: "var(--fg-secondary)", marginBottom: 20 }}>I've spent time at startups and working independently. I tend to work slowly and with care — I believe the pace of making shapes the quality of what gets made.</p>
+        <p style={{ fontSize: "var(--text-base)", lineHeight: 1.7, color: "var(--fg-secondary)", marginBottom: 48 }}>Outside of work, I'm usually near the water — surfing, reading, or cooking something that takes too long.</p>
+        <button onClick={() => onNavigate("contact")} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, fontSize: "var(--text-sm)", fontWeight: 500, color: "var(--accent-primary)", borderBottom: "1px solid var(--accent-primary)", paddingBottom: 2 }}>Get in touch</button>
+      </section>
+      <Footer onNavigate={onNavigate} />
+    </div>
+  );
+}
+
+function Field({ label, type, placeholder }) {
+  const baseStyle = {
+    fontFamily: "var(--font-sans)", fontSize: "var(--text-sm)", fontWeight: 400,
+    color: "var(--fg-primary)", background: "var(--color-cream-50)",
+    border: "1.5px solid var(--border-default)", borderRadius: "var(--radius-sm)",
+    padding: "9px 13px", outline: "none", width: "100%",
+    transition: "border-color 150ms ease-out, box-shadow 150ms ease-out",
+  };
+  const onFocus = e => { e.target.style.borderColor = "var(--color-navy-700)"; e.target.style.boxShadow = "0 0 0 3px oklch(30% 0.072 243 / 0.08)"; };
+  const onBlur = e => { e.target.style.borderColor = "var(--border-default)"; e.target.style.boxShadow = "none"; };
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+      <label style={{ fontSize: "var(--text-sm)", fontWeight: 500, color: "var(--fg-primary)" }}>{label}</label>
+      {type === "textarea"
+        ? <textarea placeholder={placeholder} rows={5} style={{ ...baseStyle, resize: "vertical" }} onFocus={onFocus} onBlur={onBlur} />
+        : <input type={type} placeholder={placeholder} style={baseStyle} onFocus={onFocus} onBlur={onBlur} />
+      }
+    </div>
+  );
+}
+
+function ContactPage({ onNavigate }) {
+  const [sent, setSent] = useState(false);
+  return (
+    <div>
+      <Header activePage="contact" onNavigate={onNavigate} />
+      <section style={{ maxWidth: 560, margin: "0 auto", padding: "80px 32px 120px" }}>
+        <p style={{ fontSize: "var(--text-xs)", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--fg-muted)", marginBottom: 16 }}>Contact</p>
+        <h1 style={{ fontFamily: "var(--font-serif)", fontSize: "var(--text-4xl)", fontWeight: 700, lineHeight: 1.15, letterSpacing: "-0.015em", marginBottom: 16 }}>Let's talk.</h1>
+        <p style={{ fontSize: "var(--text-md)", fontWeight: 300, lineHeight: 1.75, color: "var(--fg-secondary)", marginBottom: 40 }}>I'm open to project work, consulting, and occasional collaboration. Drop me a note.</p>
+        {sent ? (
+          <div style={{ padding: "24px 28px", background: "var(--bg-section-alt)", borderRadius: "var(--radius-lg)" }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: "var(--text-xl)", fontWeight: 600, color: "var(--fg-primary)", marginBottom: 6 }}>Message sent.</p>
+            <p style={{ fontSize: "var(--text-sm)", color: "var(--fg-secondary)", lineHeight: 1.6 }}>I'll get back to you within a couple of days.</p>
+          </div>
+        ) : (
+          <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              <Field label="Name" type="text" placeholder="Adam" />
+              <Field label="Email" type="email" placeholder="hello@adam.co" />
+            </div>
+            <Field label="Subject" type="text" placeholder="Project inquiry" />
+            <Field label="Message" type="textarea" placeholder="Tell me about your project…" />
+            <div>
+              <button type="submit" style={{
+                fontFamily: "var(--font-sans)", fontSize: "var(--text-sm)", fontWeight: 500,
+                padding: "11px 24px", background: "var(--color-navy-800)", color: "var(--color-cream-50)",
+                border: "none", borderRadius: "var(--radius-sm)", cursor: "pointer", transition: "background 150ms ease-out",
+              }}
+                onMouseOver={e => e.currentTarget.style.background = "var(--color-navy-900)"}
+                onMouseOut={e => e.currentTarget.style.background = "var(--color-navy-800)"}
+              >Send message</button>
+            </div>
+          </form>
+        )}
+      </section>
+      <Footer onNavigate={onNavigate} />
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────
+// APP
+// ─────────────────────────────────────────────
+function App() {
+  const [page, setPage] = useState("home");
+  const onNavigate = useCallback(p => { setPage(p); window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+
+  const pages = {
+    home:    <HomePage    onNavigate={onNavigate} />,
+    work:    <WorkPage    onNavigate={onNavigate} />,
+    about:   <AboutPage   onNavigate={onNavigate} />,
+    contact: <ContactPage onNavigate={onNavigate} />,
+  };
+
+  return pages[page] || pages.home;
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

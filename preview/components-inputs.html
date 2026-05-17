@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px 28px; background: var(--bg-page); font-family: var(--font-sans); }
+  .label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); margin: 0 0 8px; }
+  .divider { border: none; border-top: 1px solid var(--border-subtle); margin: 14px 0; }
+  .field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+  .field-label { font-size: var(--text-sm); font-weight: 500; color: var(--fg-primary); }
+  .field-hint { font-size: var(--text-xs); color: var(--fg-muted); }
+
+  input, textarea, select {
+    font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 400;
+    color: var(--fg-primary); background: var(--color-cream-50);
+    border: 1.5px solid var(--border-default); border-radius: var(--radius-sm);
+    padding: 9px 13px; outline: none; width: 280px; max-width: 100%;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+  input::placeholder, textarea::placeholder { color: var(--fg-muted); }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--color-navy-700);
+    box-shadow: 0 0 0 3px oklch(30% 0.072 243 / 0.08);
+  }
+  input.error { border-color: var(--color-coral-600); }
+  input.error:focus { box-shadow: 0 0 0 3px oklch(58% 0.115 27 / 0.12); }
+  textarea { resize: vertical; min-height: 72px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 560px; }
+</style>
+</head>
+<body>
+  <div class="label">Text inputs</div>
+  <div class="field"><div class="field-label">Name</div><input type="text" placeholder="Adam"></div>
+  <div class="field"><div class="field-label">Email</div><input type="email" placeholder="hello@adam.co"></div>
+  <div class="field"><div class="field-label">Error state</div><input type="email" class="error" value="not-valid"><div class="field-hint" style="color:var(--color-coral-600)">Enter a valid email address.</div></div>
+  <hr class="divider">
+  <div class="label">Textarea</div>
+  <div class="field">
+    <div class="field-label">Message</div>
+    <textarea placeholder="Tell me about your project…"></textarea>
+  </div>
+  <hr class="divider">
+  <div class="label">Select</div>
+  <div class="field">
+    <div class="field-label">Availability</div>
+    <select><option>Available for projects</option><option>Not currently available</option><option>Open to consulting</option></select>
+  </div>
+</body>
+</html>

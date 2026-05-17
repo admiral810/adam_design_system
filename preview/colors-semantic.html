@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg-page); font-family: var(--font-sans); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+  .token { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-xs); }
+  .token-swatch { height: 44px; }
+  .token-info { padding: 7px 9px; background: white; }
+  .token-name { font-size: 10px; font-weight: 500; color: var(--fg-primary); font-family: var(--font-mono); }
+  .token-role { font-size: 10px; color: var(--fg-muted); margin-top: 2px; }
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); margin: 0 0 8px; }
+  .group { margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div class="group">
+  <div class="section-label">Backgrounds</div>
+  <div class="grid">
+    <div class="token"><div class="token-swatch" style="background:var(--bg-page);border:1px solid oklch(85% 0.02 80)"></div><div class="token-info"><div class="token-name">--bg-page</div><div class="token-role">page bg</div></div></div>
+    <div class="token"><div class="token-swatch" style="background:var(--bg-subtle);border:1px solid oklch(85% 0.02 80)"></div><div class="token-info"><div class="token-name">--bg-subtle</div><div class="token-role">section</div></div></div>
+    <div class="token"><div class="token-swatch" style="background:var(--bg-section-alt)"></div><div class="token-info"><div class="token-name">--bg-section-alt</div><div class="token-role">coral wash</div></div></div>
+    <div class="token"><div class="token-swatch" style="background:var(--bg-section-blue)"></div><div class="token-info"><div class="token-name">--bg-section-blue</div><div class="token-role">blue wash</div></div></div>
+  </div>
+</div>
+<div class="group">
+  <div class="section-label">Foreground</div>
+  <div class="grid">
+    <div class="token"><div class="token-swatch" style="background:var(--fg-primary)"></div><div class="token-info"><div class="token-name">--fg-primary</div><div class="token-role">headings</div></div></div>
+    <div class="token"><div class="token-swatch" style="background:var(--fg-secondary)"></div><div class="token-info"><div class="token-name">--fg-secondary</div><div class="token-role">body</div></div></div>
+    <div class="token"><div class="token-swatch" style="background:var(--fg-muted)"></div><div class="token-info"><div class="token-name">--fg-muted</div><div class="token-role">captions</div></div></div>
+    <div class="token"><div class="token-swatch" style="background:var(--fg-inverse);border:1px solid oklch(85% 0.02 80)"></div><div class="token-info"><div class="token-name">--fg-inverse</div><div class="token-role">on dark</div></div></div>
+  </div>
+</div>
+<div class="group">
+  <div class="section-label">Accent &amp; Interactive</div>
+  <div class="grid">
+    <div class="token"><div class="token-swatch" style="background:var(--accent-primary)"></div><div class="token-info"><div class="token-name">--accent-primary</div><div class="token-role">CTA, links</div></div></div>
+    <div class="token"><div class="token-swatch" style="background:var(--accent-hover)"></div><div class="token-info"><div class="token-name">--accent-hover</div><div class="token-role">hover</div></div></div>
+    <div class="token"><div class="token-swatch" style="background:var(--accent-subtle)"></div><div class="token-info"><div class="token-name">--accent-subtle</div><div class="token-role">tint</div></div></div>
+    <div class="token"><div class="token-swatch" style="background:var(--border-default)"></div><div class="token-info"><div class="token-name">--border-default</div><div class="token-role">borders</div></div></div>
+  </div>
+</div>
+</body>
+</html>

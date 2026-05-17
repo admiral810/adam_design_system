@@ -1,0 +1,350 @@
+/**
+ * Adam's Personal Design System
+ * colors_and_type.css
+ * ─────────────────────────────────────────────────────────
+ * CSS custom properties for colors, typography, spacing,
+ * border-radius, shadows, and semantic tokens.
+ *
+ * Google Fonts used (load in <head>):
+ *   @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap');
+ */
+
+/* ─── Google Fonts ─────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@400&display=swap');
+
+:root {
+
+  /* ─── Base Color Palette ──────────────────────────────── */
+
+  /* Cream / Linen backgrounds */
+  --color-cream-50:   oklch(97% 0.015 80);   /* lightest — almost white but warm */
+  --color-cream-100:  oklch(95% 0.022 80);   /* default page background */
+  --color-cream-200:  oklch(91% 0.025 78);   /* subtle section divider */
+  --color-cream-300:  oklch(86% 0.028 76);   /* stronger warm neutral */
+
+  /* Navy — coastal, deep, grounded */
+  --color-navy-900:   oklch(22% 0.065 245);  /* darkest — rich ink */
+  --color-navy-800:   oklch(30% 0.072 243);  /* primary heading color */
+  --color-navy-700:   oklch(38% 0.07  242);  /* body text */
+  --color-navy-600:   oklch(46% 0.065 241);  /* secondary text */
+  --color-navy-400:   oklch(60% 0.055 241);  /* muted / placeholder */
+  --color-navy-200:   oklch(78% 0.035 240);  /* borders / dividers */
+  --color-navy-100:   oklch(89% 0.02  240);  /* very light tint */
+
+  /* Coral / Terracotta — sunrise warmth */
+  --color-coral-700:  oklch(50% 0.12  28);   /* deep terracotta */
+  --color-coral-600:  oklch(58% 0.115 27);   /* primary accent */
+  --color-coral-500:  oklch(65% 0.105 26);   /* standard coral */
+  --color-coral-400:  oklch(72% 0.09  25);   /* light coral */
+  --color-coral-200:  oklch(86% 0.055 24);   /* tint / wash */
+  --color-coral-100:  oklch(93% 0.03  24);   /* very light blush */
+
+  /* Salmon / Peach — towel inspiration */
+  --color-salmon-500: oklch(73% 0.09  22);   /* warm salmon stripe */
+  --color-salmon-300: oklch(83% 0.06  20);   /* soft peach */
+  --color-salmon-100: oklch(93% 0.03  18);   /* peach wash */
+
+  /* Slate Blue — airy, coastal mid-blue */
+  --color-slate-500:  oklch(68% 0.055 238);  /* slate stripe, towel */
+  --color-slate-300:  oklch(80% 0.04  237);  /* light slate */
+  --color-slate-100:  oklch(92% 0.02  236);  /* pale blue wash */
+
+  /* Amber / Ochre — warm earth, used sparingly */
+  --color-amber-600:  oklch(60% 0.105 68);   /* deep ochre */
+  --color-amber-500:  oklch(67% 0.1   67);   /* amber stripe, towel */
+  --color-amber-300:  oklch(80% 0.07  65);   /* warm sand */
+  --color-amber-100:  oklch(92% 0.04  63);   /* amber wash */
+
+
+  /* ─── Semantic Color Tokens ───────────────────────────── */
+
+  --bg-page:          var(--color-cream-100);
+  --bg-subtle:        var(--color-cream-200);
+  --bg-section-alt:   var(--color-coral-100);
+  --bg-section-blue:  var(--color-slate-100);
+
+  --fg-primary:       var(--color-navy-800);
+  --fg-secondary:     var(--color-navy-600);
+  --fg-muted:         var(--color-navy-400);
+  --fg-inverse:       var(--color-cream-50);
+
+  --accent-primary:   var(--color-coral-600);
+  --accent-hover:     var(--color-coral-700);
+  --accent-subtle:    var(--color-coral-200);
+
+  --border-default:   var(--color-navy-200);
+  --border-subtle:    var(--color-cream-300);
+
+  --link-default:     var(--color-coral-600);
+  --link-hover:       var(--color-coral-700);
+
+
+  /* ─── Typography Families ─────────────────────────────── */
+
+  --font-serif:   'Lora', Georgia, 'Times New Roman', serif;
+  --font-sans:    'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+
+
+  /* ─── Type Scale ──────────────────────────────────────── */
+
+  --text-xs:    0.75rem;    /* 12px */
+  --text-sm:    0.875rem;   /* 14px */
+  --text-base:  1rem;       /* 16px */
+  --text-md:    1.125rem;   /* 18px */
+  --text-lg:    1.25rem;    /* 20px */
+  --text-xl:    1.5rem;     /* 24px */
+  --text-2xl:   1.875rem;   /* 30px */
+  --text-3xl:   2.25rem;    /* 36px */
+  --text-4xl:   3rem;       /* 48px */
+  --text-5xl:   3.75rem;    /* 60px */
+
+
+  /* ─── Type Roles (semantic) ───────────────────────────── */
+
+  --type-display-size:    var(--text-5xl);
+  --type-display-font:    var(--font-serif);
+  --type-display-weight:  700;
+  --type-display-lh:      1.1;
+  --type-display-ls:      -0.02em;
+
+  --type-h1-size:         var(--text-4xl);
+  --type-h1-font:         var(--font-serif);
+  --type-h1-weight:       700;
+  --type-h1-lh:           1.15;
+  --type-h1-ls:           -0.015em;
+
+  --type-h2-size:         var(--text-3xl);
+  --type-h2-font:         var(--font-serif);
+  --type-h2-weight:       600;
+  --type-h2-lh:           1.2;
+  --type-h2-ls:           -0.01em;
+
+  --type-h3-size:         var(--text-2xl);
+  --type-h3-font:         var(--font-serif);
+  --type-h3-weight:       600;
+  --type-h3-lh:           1.25;
+  --type-h3-ls:           -0.005em;
+
+  --type-h4-size:         var(--text-xl);
+  --type-h4-font:         var(--font-sans);
+  --type-h4-weight:       500;
+  --type-h4-lh:           1.3;
+  --type-h4-ls:           0;
+
+  --type-body-lg-size:    var(--text-md);
+  --type-body-lg-font:    var(--font-sans);
+  --type-body-lg-weight:  300;
+  --type-body-lg-lh:      1.75;
+
+  --type-body-size:       var(--text-base);
+  --type-body-font:       var(--font-sans);
+  --type-body-weight:     400;
+  --type-body-lh:         1.7;
+
+  --type-small-size:      var(--text-sm);
+  --type-small-font:      var(--font-sans);
+  --type-small-weight:    400;
+  --type-small-lh:        1.6;
+
+  --type-label-size:      var(--text-xs);
+  --type-label-font:      var(--font-sans);
+  --type-label-weight:    500;
+  --type-label-lh:        1.4;
+  --type-label-ls:        0.08em;
+  --type-label-transform: uppercase;
+
+  --type-caption-size:    var(--text-sm);
+  --type-caption-font:    var(--font-sans);
+  --type-caption-style:   italic;
+  --type-caption-weight:  300;
+  --type-caption-lh:      1.5;
+
+  --type-mono-size:       var(--text-sm);
+  --type-mono-font:       var(--font-mono);
+  --type-mono-weight:     400;
+  --type-mono-lh:         1.6;
+
+
+  /* ─── Spacing Scale ───────────────────────────────────── */
+
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-8:    32px;
+  --space-10:   40px;
+  --space-12:   48px;
+  --space-16:   64px;
+  --space-20:   80px;
+  --space-24:   96px;
+  --space-32:   128px;
+
+
+  /* ─── Border Radius ───────────────────────────────────── */
+
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+
+  /* ─── Shadows ─────────────────────────────────────────── */
+
+  --shadow-xs:  0 1px 3px  oklch(30% 0.07 243 / 0.06);
+  --shadow-sm:  0 2px 8px  oklch(30% 0.07 243 / 0.08);
+  --shadow-md:  0 4px 20px oklch(30% 0.07 243 / 0.10);
+  --shadow-lg:  0 8px 40px oklch(30% 0.07 243 / 0.12);
+  --shadow-xl:  0 16px 64px oklch(30% 0.07 243 / 0.14);
+
+  /* Warm shadow variant (used on cream cards) */
+  --shadow-warm-sm: 0 2px 8px  oklch(55% 0.08 28 / 0.08);
+  --shadow-warm-md: 0 4px 20px oklch(55% 0.08 28 / 0.10);
+
+
+  /* ─── Transitions ─────────────────────────────────────── */
+
+  --transition-fast:   150ms ease-out;
+  --transition-base:   300ms ease-out;
+  --transition-slow:   500ms ease-out;
+  --transition-enter:  400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ─── Base Resets & Element Defaults ─────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--fg-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-lh);
+}
+
+/* ─── Semantic Type Elements ─────────────────────────────── */
+
+h1 {
+  font-family: var(--type-h1-font);
+  font-size: var(--type-h1-size);
+  font-weight: var(--type-h1-weight);
+  line-height: var(--type-h1-lh);
+  letter-spacing: var(--type-h1-ls);
+  color: var(--fg-primary);
+}
+
+h2 {
+  font-family: var(--type-h2-font);
+  font-size: var(--type-h2-size);
+  font-weight: var(--type-h2-weight);
+  line-height: var(--type-h2-lh);
+  letter-spacing: var(--type-h2-ls);
+  color: var(--fg-primary);
+}
+
+h3 {
+  font-family: var(--type-h3-font);
+  font-size: var(--type-h3-size);
+  font-weight: var(--type-h3-weight);
+  line-height: var(--type-h3-lh);
+  letter-spacing: var(--type-h3-ls);
+  color: var(--fg-primary);
+}
+
+h4 {
+  font-family: var(--type-h4-font);
+  font-size: var(--type-h4-size);
+  font-weight: var(--type-h4-weight);
+  line-height: var(--type-h4-lh);
+  color: var(--fg-primary);
+}
+
+p {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--type-body-weight);
+  line-height: var(--type-body-lh);
+  color: var(--fg-secondary);
+}
+
+a {
+  color: var(--link-default);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: var(--type-mono-size);
+  line-height: var(--type-mono-lh);
+}
+
+/* ─── Utility Classes ─────────────────────────────────────── */
+
+.text-display {
+  font-family: var(--font-serif);
+  font-size: var(--type-display-size);
+  font-weight: var(--type-display-weight);
+  line-height: var(--type-display-lh);
+  letter-spacing: var(--type-display-ls);
+}
+
+.text-label {
+  font-family: var(--font-sans);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-ls);
+  text-transform: var(--type-label-transform);
+  color: var(--fg-muted);
+}
+
+.text-caption {
+  font-family: var(--font-sans);
+  font-size: var(--type-caption-size);
+  font-style: var(--type-caption-style);
+  font-weight: var(--type-caption-weight);
+  line-height: var(--type-caption-lh);
+  color: var(--fg-muted);
+}
+
+.text-body-lg {
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--type-body-lg-weight);
+  line-height: var(--type-body-lg-lh);
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+  font-size: var(--type-mono-size);
+  line-height: var(--type-mono-lh);
+}
+
+/* Color utilities */
+.text-primary    { color: var(--fg-primary); }
+.text-secondary  { color: var(--fg-secondary); }
+.text-muted      { color: var(--fg-muted); }
+.text-accent     { color: var(--accent-primary); }
+.text-inverse    { color: var(--fg-inverse); }
+
+.bg-page         { background: var(--bg-page); }
+.bg-subtle       { background: var(--bg-subtle); }
+.bg-section-alt  { background: var(--bg-section-alt); }
+.bg-navy         { background: var(--color-navy-800); }

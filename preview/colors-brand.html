@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--bg-page); font-family: var(--font-sans); }
+  .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+  .swatch { flex: 1; min-width: 80px; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+  .swatch-color { height: 72px; }
+  .swatch-info { padding: 8px 10px; background: white; }
+  .swatch-name { font-size: 11px; font-weight: 500; color: var(--fg-primary); letter-spacing: 0.03em; }
+  .swatch-val  { font-size: 10px; color: var(--fg-muted); font-family: var(--font-mono); margin-top: 2px; }
+  .section-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); margin: 0 0 8px; }
+  .group { margin-bottom: 18px; }
+</style>
+</head>
+<body>
+<div class="group">
+  <div class="section-label">Navy</div>
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(22% 0.065 245)"></div>
+      <div class="swatch-info"><div class="swatch-name">Navy 900</div><div class="swatch-val">ink</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(30% 0.072 243)"></div>
+      <div class="swatch-info"><div class="swatch-name">Navy 800</div><div class="swatch-val">primary</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(38% 0.07 242)"></div>
+      <div class="swatch-info"><div class="swatch-name">Navy 700</div><div class="swatch-val">body</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(46% 0.065 241)"></div>
+      <div class="swatch-info"><div class="swatch-name">Navy 600</div><div class="swatch-val">secondary</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(60% 0.055 241)"></div>
+      <div class="swatch-info"><div class="swatch-name">Navy 400</div><div class="swatch-val">muted</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(78% 0.035 240)"></div>
+      <div class="swatch-info"><div class="swatch-name">Navy 200</div><div class="swatch-val">border</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(89% 0.02 240)"></div>
+      <div class="swatch-info"><div class="swatch-name">Navy 100</div><div class="swatch-val">tint</div></div>
+    </div>
+  </div>
+</div>
+<div class="group">
+  <div class="section-label">Coral / Terracotta</div>
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(50% 0.12 28)"></div>
+      <div class="swatch-info"><div class="swatch-name">Coral 700</div><div class="swatch-val">deep terra</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(58% 0.115 27)"></div>
+      <div class="swatch-info"><div class="swatch-name">Coral 600</div><div class="swatch-val">accent</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(65% 0.105 26)"></div>
+      <div class="swatch-info"><div class="swatch-name">Coral 500</div><div class="swatch-val">standard</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(72% 0.09 25)"></div>
+      <div class="swatch-info"><div class="swatch-name">Coral 400</div><div class="swatch-val">light</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(86% 0.055 24)"></div>
+      <div class="swatch-info"><div class="swatch-name">Coral 200</div><div class="swatch-val">wash</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:oklch(93% 0.03 24)"></div>
+      <div class="swatch-info"><div class="swatch-name">Coral 100</div><div class="swatch-val">blush</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
